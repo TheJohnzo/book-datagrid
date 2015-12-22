@@ -1,0 +1,9 @@
+<div align="center">
+  <a href="#" ng-click="selectBook(book.id)">
+    <img src="{{book.cover}}" />
+    <h4>{{book.name}}</h4>
+  </a>
+  <h5>By {{book.author.name}}</h5>
+  <span class="likes"><span class="icon-heart"></span>{{book.likes}}</span>
+  <time class="published-date" am-time-ago="book.published"></time><!-- requires angularMoment -->
+</div>

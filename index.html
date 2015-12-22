@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="bookViewer">
+  <head>
+    <script type="text/javascript" src="angular.min.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="book-viewer.css" />
+  </head>
+  <body ng-controller="BookController as bookCtrl">
+    <div class="body" ng-show="listView == 1">
+      <div class="input-group" align="center">
+      Find me the best &nbsp;
+      <select name="category"
+        ng-options="option.name for option in categoryData.availableOptions track by option.id" 
+        ng-model="categoryData.selectedOption"
+        ng-change="resetPage()">
+      </select> 
+      &nbsp;books about &nbsp;
+      <select name="genre"
+        ng-options="option.name for option in genreData.availableOptions track by option.id" 
+        ng-model="genreData.selectedOption"
+        ng-change="resetPage()">
+      </select> 
+      &nbsp;&nbsp;or&nbsp;&nbsp;
+      <input type="search" ng-model="q" class="form-control search-box" placeholder="Search books"/>
+      </div>
+
+      <div class="body" align="center" ng-hide="dataLength > 0">
+        Sorry, can't find any books in that search.
+      </div>
+
+      <page-controls ng-show="dataLength > 0"></page-controls>
+
+      <div class="book-container">
+        <div class="book" 
+          ng-repeat="book in books | filter: genreFilter | filter:q | startFrom:currentPage*pageSize | limitTo: pageSize as results " ng-if="$index < 9">
+          <div class="book-inner">
+            <book-preview></book-preview>
+          </div>
+        </div>
+      </div>
+
+      <page-controls ng-show="dataLength > 0"></page-controls>
+
+    </div>
+
+    <div class="body">
+      <book-full-view ng-show="singleView == 1"></book-full-view>
+    </div>
+  </body>
+</html>

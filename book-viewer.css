@@ -1,0 +1,68 @@
+.book-container {
+  margin: 25px;
+}
+.book {
+  float: left;
+  margin: 10px;
+  width: 30%;
+  position: relative;
+}
+.book-inner {
+  border: thin black solid;
+  .border-radius( 5px );
+  width: 250px;
+  margin: 5px;
+  height: 475px;
+  border-radius: 2%;
+  -moz-border-radius: 2%;
+  -webkit-border-radius: 2%;
+  -khtml-border-radius: 2%;
+  overflow: hidden;
+  background-color: white;
+}
+.book-inner img {
+  width: 250px;
+}
+span.likes {
+  float: left;
+  text-align: left;
+  margin-left: 5px;
+}
+time.published-date{
+  float: right;
+  text-align: right;
+  margin-right: 5px;
+}
+div.body {
+  width: 80%;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.underline {
+  text-decoration: underline;
+}
+.bookInfo {
+  background-color: #F1EFEF;
+  margin: 0px;
+  padding: 25px;
+}
+.bookIntro {
+  background-color: #F6F6F6;
+  margin: 0px;
+  padding: 25px;
+}
+.bookSimilar {
+  background-color: #F1EFEF;
+  margin: 0px;
+  padding: 25px;
+  min-height: 600px;
+}
+.closeButton {
+  float: right;
+  margin-bottom: 25px;
+}
+page-controls {
+  float: left;
+  width: 100%;
+  margin-bottom: 25px;
+}

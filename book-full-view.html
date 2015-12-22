@@ -1,0 +1,35 @@
+<div class="bookInfo">
+  <button class="closeButton" ng-click="closeView()">Close</button>
+  <h4>{{books[selectedBook].name}}</h4>
+  <h5>By {{books[selectedBook].author.name}}</h5>
+  <p>{{books[selectedBook].description}}</p>
+  <p>Categories:</p>
+  <p class="underline">{{books[selectedBook].genre.category}}, {{books[selectedBook].genre.name}}</p>
+</div>
+<div class="bookIntro">
+  <h6>Introduction</h6>
+  <h4>{{books[selectedBook].name}}</h4>
+  <p ng-repeat="paragraph in books[selectedBook].introduction">
+    {{paragraph.content}}
+  </p>
+  <div align="center">
+    <span class="imageBorder">
+      <img class="img-circle" src="{{books[selectedBook].author.avatar}}" width="100px"/>
+    </span>
+    <h6>Written by {{books[selectedBook].author.name}}</h6>
+  </div>
+</div>
+<div class="bookSimilar" align="center">
+  <h3>Similar Reading</h3>
+  <h5>If you liked this book, we recommend you check out these emerging titles.</h5>
+  <div class="book" ng-repeat="book in books | filter:releatedByGenre | orderBy:'-likes':reverse | limitTo:3 as results">
+    <div class="book-inner">
+      <book-preview></book-preview>
+    </div>
+  </div>
+  <div ng-show="results.length === 0">
+  	<br /><br />
+    <h4><em>Could not find any similar books...</em></h4>
+  </div>
+  <button class="closeButton" ng-click="closeView()">Close</button>
+</div>
